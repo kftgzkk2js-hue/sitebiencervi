@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Bien Cervi · Café associatif à Rocheservière</title>
+<meta name="description" content="Le Bien Cervi, café associatif de Rocheservière (85) : un lieu de rencontre, d'ateliers et d'animations gratuites, ouvert à toutes et tous toute l'année.">
+<meta name="theme-color" content="#C65D3B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --creme:#FBF3E4; --papier:#FFFBF2; --cafe:#3B2A20; --cafe-doux:#6B5545;
+  --terre:#C65D3B; --terre-fonce:#A44728; --moutarde:#EBB03A; --sauge:#7C9A6B; --sauge-clair:#DDE8D3;
+  --rose:#F2B8A2; --ardoise:#2B3A33;
+  --titre:'Fraunces',Georgia,serif; --texte:'Nunito',system-ui,sans-serif;
+  --rayon:22px; --ombre:5px 5px 0 var(--cafe);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--texte);color:var(--cafe);background:var(--creme);line-height:1.65;font-size:17px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .12 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{color:var(--terre-fonce)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--titre);line-height:1.15;font-weight:900;letter-spacing:-.01em}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+
+/* ---- En-tête ---- */
+.top{position:sticky;top:0;z-index:50;background:rgba(251,243,228,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--cafe)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cafe);font-family:var(--titre);font-weight:900;font-size:1.35rem}
+.logo svg{width:38px;height:38px}
+nav ul{list-style:none;display:flex;gap:6px;padding:0}
+nav a{display:block;padding:7px 15px;border-radius:99px;text-decoration:none;color:var(--cafe);font-weight:700;font-size:.97rem}
+nav a:hover{background:var(--moutarde)}
+nav a.actif{background:var(--cafe);color:var(--creme)}
+.burger{display:none;background:none;border:2px solid var(--cafe);border-radius:12px;padding:6px 12px;font:700 1rem var(--texte);color:var(--cafe);cursor:pointer}
+
+/* ---- Boutons ---- */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:99px;border:2px solid var(--cafe);background:var(--terre);color:#fff;font:800 1rem var(--texte);text-decoration:none;box-shadow:3px 3px 0 var(--cafe);transition:.15s;cursor:pointer}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--cafe)}
+.btn.clair{background:var(--papier);color:var(--cafe)}
+.btn.jaune{background:var(--moutarde);color:var(--cafe)}
+
+/* ---- Accueil : hero ---- */
+.hero{position:relative;overflow:hidden;padding:64px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.pastille{display:inline-flex;align-items:center;gap:8px;background:var(--papier);border:2px solid var(--cafe);border-radius:99px;padding:5px 14px;font-weight:800;font-size:.9rem;margin-bottom:20px}
+.pastille i{width:11px;height:11px;border-radius:50%;background:#aaa;display:block}
+.pastille.ouvert i{background:#3FA34D;box-shadow:0 0 0 4px rgba(63,163,77,.25)}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);margin-bottom:18px}
+.surligne{background:linear-gradient(transparent 58%,var(--moutarde) 58% 92%,transparent 92%);padding:0 .1em}
+.hero p.lead{font-size:1.2rem;max-width:34em;margin-bottom:28px;color:var(--cafe-doux)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+.visuel{position:relative;aspect-ratio:1;max-width:420px;margin-inline:auto;width:100%}
+.visuel .rond{position:absolute;inset:6%;border-radius:50%;background:var(--terre);border:3px solid var(--cafe);box-shadow:var(--ombre)}
+.visuel .rond2{position:absolute;width:34%;aspect-ratio:1;right:-2%;top:2%;border-radius:50%;background:var(--moutarde);border:3px solid var(--cafe)}
+.visuel .rond3{position:absolute;width:22%;aspect-ratio:1;left:0;bottom:8%;border-radius:50%;background:var(--sauge);border:3px solid var(--cafe)}
+.visuel svg{position:absolute;inset:14%;width:72%;height:72%}
+.sticker{position:absolute;right:2%;bottom:4%;background:var(--papier);border:3px solid var(--cafe);border-radius:18px;padding:10px 16px;transform:rotate(-6deg);font-family:var(--titre);font-weight:900;font-size:1.05rem;box-shadow:4px 4px 0 var(--cafe);text-align:center;line-height:1.2}
+.sticker small{display:block;font:700 .8rem var(--texte)}
+.vague{position:absolute;bottom:-1px;left:0;width:100%;height:50px}
+
+/* ---- Sections ---- */
+section.bloc{padding:70px 0}
+section.bloc.sauge{background:var(--sauge-clair);border-block:2px solid var(--cafe)}
+.titre-section{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.titre-section h2{font-size:clamp(1.8rem,4vw,2.7rem)}
+.titre-section h2 span{display:block;font:italic 500 1rem var(--titre);color:var(--terre-fonce);letter-spacing:.02em;margin-bottom:4px}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:30px}
+
+/* ---- Cartes ---- */
+.carte{position:relative;display:flex;flex-direction:column;background:var(--papier);border:2px solid var(--cafe);border-radius:var(--rayon);box-shadow:var(--ombre);overflow:hidden;text-decoration:none;color:inherit;transition:.18s}
+.carte:hover{transform:translate(-3px,-3px) rotate(-.6deg);box-shadow:8px 8px 0 var(--cafe)}
+.carte .vignette{aspect-ratio:16/10;border-bottom:2px solid var(--cafe);display:grid;place-items:center;font-size:3.6rem;background:var(--rose);overflow:hidden}
+.carte .vignette img{width:100%;height:100%;object-fit:cover}
+.carte .corps{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.carte h3{font-size:1.35rem}
+.carte .meta{font-size:.93rem;color:var(--cafe-doux);font-weight:600}
+.carte .extrait{font-size:.97rem;color:var(--cafe-doux);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.carte .plus{margin-top:auto;padding-top:8px;font-weight:800;color:var(--terre-fonce)}
+.date-badge{position:absolute;top:14px;left:14px;width:62px;text-align:center;background:var(--papier);border:2px solid var(--cafe);border-radius:14px;overflow:hidden;box-shadow:3px 3px 0 var(--cafe);transform:rotate(-4deg);z-index:2}
+.date-badge b{display:block;background:var(--terre);color:#fff;font:800 .72rem var(--texte);text-transform:uppercase;letter-spacing:.08em;padding:3px 0}
+.date-badge span{display:block;font:900 1.7rem var(--titre);padding:2px 0 4px}
+.etiquette{position:absolute;top:14px;right:14px;z-index:2;background:var(--cafe);color:var(--creme);font:800 .75rem var(--texte);padding:4px 12px;border-radius:99px}
+.carte.passee{filter:saturate(.55);opacity:.85}
+.vide{background:var(--papier);border:2px dashed var(--cafe-doux);border-radius:var(--rayon);padding:34px;text-align:center;color:var(--cafe-doux);font-weight:600}
+
+/* ---- Bandeau rejoindre ---- */
+.rejoindre{background:var(--terre);color:#fff;border-block:2px solid var(--cafe);padding:64px 0}
+.rejoindre .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center}
+.rejoindre h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:12px}
+.rejoindre p{font-size:1.1rem;opacity:.96}
+.rejoindre .btns{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+
+/* ---- Infos pratiques ---- */
+.infos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.infos .boite{background:var(--papier);border:2px solid var(--cafe);border-radius:var(--rayon);padding:26px 28px;box-shadow:var(--ombre)}
+.infos h3{font-size:1.3rem;margin-bottom:10px}
+.infos .boite p{white-space:pre-line}
+
+/* ---- Pages ---- */
+.page-tete{padding:54px 0 28px}
+.page-tete h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.page-tete p{color:var(--cafe-doux);font-size:1.15rem;max-width:40em;margin-top:10px}
+.fil{display:inline-block;margin-bottom:18px;font-weight:800;text-decoration:none}
+.fil:hover{text-decoration:underline wavy}
+.page-corps{padding-bottom:80px}
+.fiche{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start}
+.fiche .texte p{margin-bottom:1em}
+.fiche .texte{font-size:1.1rem}
+.cartouche{background:var(--papier);border:2px solid var(--cafe);border-radius:var(--rayon);box-shadow:var(--ombre);padding:22px 26px;position:sticky;top:96px}
+.cartouche div{display:flex;gap:12px;padding:9px 0;border-bottom:2px dotted rgba(59,42,32,.25)}
+.cartouche div:last-child{border:0}
+.cartouche em{font-style:normal;font-size:1.3rem}
+.galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:30px}
+.galerie img{width:100%;aspect-ratio:4/3;object-fit:cover;border:2px solid var(--cafe);border-radius:18px;box-shadow:4px 4px 0 var(--cafe);cursor:zoom-in;transition:.15s}
+.galerie img:hover{transform:rotate(-1.2deg) scale(1.02)}
+.bascule{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.bascule button{font:800 .95rem var(--texte);padding:8px 18px;border-radius:99px;border:2px solid var(--cafe);background:var(--papier);color:var(--cafe);cursor:pointer}
+.bascule button.on{background:var(--cafe);color:var(--creme)}
+
+/* ---- À propos ---- */
+.valeurs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin:40px 0}
+.valeur{background:var(--papier);border:2px solid var(--cafe);border-radius:var(--rayon);padding:24px;box-shadow:var(--ombre)}
+.valeur:nth-child(2){background:var(--sauge-clair)} .valeur:nth-child(3){background:#FBE3C2}
+.valeur .ico{font-size:2.2rem}
+.valeur h3{font-size:1.25rem;margin:6px 0}
+
+/* ---- Menu : l'ardoise ---- */
+.ardoise{background:var(--ardoise);color:#F4EFE3;border:10px solid #8B5E3C;border-radius:18px;box-shadow:var(--ombre);padding:44px clamp(22px,5vw,56px);
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:6px 6px}
+.ardoise .cat{margin-bottom:40px}
+.ardoise .cat:last-child{margin:0}
+.ardoise h2{font-family:var(--titre);font-style:italic;font-weight:500;font-size:1.9rem;color:var(--moutarde);margin-bottom:14px;border-bottom:2px dashed rgba(244,239,227,.35);padding-bottom:6px}
+.ardoise .ligne{display:flex;align-items:baseline;gap:10px;margin:14px 0 2px}
+.ardoise .ligne b{font:800 1.15rem var(--texte)}
+.ardoise .pointilles{flex:1;border-bottom:2px dotted rgba(244,239,227,.45);transform:translateY(-4px)}
+.ardoise .prix{font:800 1.15rem var(--texte);color:var(--rose)}
+.ardoise .desc{font-size:.97rem;opacity:.8}
+.note-menu{margin-top:22px;text-align:center;color:var(--cafe-doux);font-weight:600}
+
+/* ---- Pied de page ---- */
+footer{background:var(--cafe);color:var(--creme);padding:50px 0 30px;margin-top:0}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+footer h4{font-family:var(--titre);color:var(--moutarde);margin-bottom:10px;font-size:1.1rem}
+footer a{color:var(--creme)}
+footer p{white-space:pre-line;font-size:.97rem}
+footer .bas{grid-column:1/-1;border-top:1px solid rgba(251,243,228,.25);padding-top:18px;font-size:.88rem;opacity:.8;text-align:center}
+
+/* ---- Divers ---- */
+.chargement{text-align:center;padding:120px 20px;font:italic 500 1.4rem var(--titre);color:var(--cafe-doux)}
+.chargement .tasse{display:block;font-size:3rem;animation:flotte 1.6s ease-in-out infinite}
+@keyframes flotte{50%{transform:translateY(-10px) rotate(-6deg)}}
+.bandeau-erreur{background:#FFE9D6;border-bottom:2px solid var(--cafe);text-align:center;padding:8px;font-weight:700;font-size:.92rem}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,20,14,.9);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lightbox img{max-height:90vh;border-radius:14px;border:3px solid var(--creme)}
+.apparition{animation:monte .5s ease both}
+@keyframes monte{from{opacity:0;transform:translateY(14px)}}
+
+@media (max-width:860px){
+  .hero .wrap,.rejoindre .wrap,.fiche,footer .wrap{grid-template-columns:1fr}
+  .cartouche{position:static}
+  .visuel{max-width:300px;order:-1}
+  .burger{display:block}
+  nav{position:absolute;top:100%;left:0;right:0;background:var(--creme);border-bottom:2px solid var(--cafe);display:none;padding:10px 20px 18px}
+  nav.ouvert{display:block}
+  nav ul{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#/">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#C65D3B" stroke="#3B2A20" stroke-width="3"/><path d="M16 28h26v12a10 10 0 0 1-10 10h-6a10 10 0 0 1-10-10z" fill="#FFFBF2" stroke="#3B2A20" stroke-width="3"/><path d="M42 31h4a5 5 0 0 1 0 10h-4" fill="none" stroke="#3B2A20" stroke-width="3"/><path d="M23 22c-2-3 2-4 0-8M31 22c-2-3 2-4 0-8" fill="none" stroke="#EBB03A" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>Le Bien Cervi</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰ Menu</button>
+    <nav id="nav"><ul>
+      <li><a href="#/" data-p="accueil">Accueil</a></li>
+      <li><a href="#/animations" data-p="animations">Animations</a></li>
+      <li><a href="#/actualites" data-p="actualites">Actualités</a></li>
+      <li><a href="#/menu" data-p="menu">Menu</a></li>
+      <li><a href="#/a-propos" data-p="a-propos">À propos</a></li>
+    </ul></nav>
+  </div>
+</header>
+<div id="erreur"></div>
+<main id="app"><div class="chargement"><span class="tasse">☕</span>On prépare le café…</div></main>
+<footer id="pied"></footer>
+
+<script>
+/* =====================================================================
+   CONFIGURATION — la seule chose à modifier
+   ===================================================================== */
+const CONFIG = {
+  // Colle ici l'URL de l'application web Apps Script (se termine par /exec)
+  API_URL: "COLLE_ICI_L_URL_DE_L_APPLICATION_WEB",
+  ACTUALISATION_MS: 5 * 60 * 1000,   // le site se remet à jour tout seul toutes les 5 min
+  // Horaires utilisés pour la pastille « Ouvert maintenant » (0 = dimanche … 6 = samedi) : [début, fin] en heures décimales
+  HORAIRES: { 3: [[15, 18]], 6: [[11, 12.5], [15, 18]] },
+  // Textes par défaut (modifiables aussi depuis l'onglet « Infos » du Sheets, voir la clé entre parenthèses)
+  DEFAUT: {
+    nom: "Le Bien Cervi",                                                                              // (nom)
+    accroche: "Un café associatif convivial à Rocheservière",                                           // (accroche)
+    intro: "Le Bien Cervi est un lieu de rencontre et de convivialité pour les habitants du village et de ses alentours. On y vient boire un café, discuter, jouer, créer, apprendre, partager.", // (intro)
+    a_propos: "Le Bien Cervi est un café associatif basé à Rocheservière (85). C'est un lieu de rencontre et de convivialité pour les habitants du village et de ses alentours.\nLe café est ouvert le mercredi et le samedi. Il propose régulièrement et gratuitement des ateliers, expositions, événements et autres actions culturelles tout au long de l'année.\nIci, tout le monde est le bienvenu : petits, grands, nouveaux arrivants et habitués. Le café vit grâce à ses bénévoles et à l'énergie de celles et ceux qui proposent des idées.", // (a_propos)
+    horaires: "Mercredi : 15h – 18h\nSamedi : 11h – 12h30 / 15h – 18h",                                  // (horaires)
+    adresse: "9 rue du champs de foire\n85620 Rocheservière",                                           // (adresse)
+    email: "contact@lebiencervi.fr",                                                                    // (email)
+    helloasso: "https://www.helloasso.com/associations/le-bien-cervi",                                  // (helloasso)
+    facebook: "",                                                                                       // (facebook)  URL de la page
+    instagram: "",                                                                                      // (instagram) URL du compte
+    rejoindre: "Devenez membre de l'équipe du Bien Cervi ! Participez aux permanences, proposez des ateliers, faites partie intégrante de l'organisation de nos événements." // (rejoindre)
+  }
+};
+
+/* =====================================================================
+   Données de démonstration (affichées tant que l'API_URL n'est pas renseignée)
+   ===================================================================== */
+const DEMO = {
+  animations: [
+    { id:"1", titre:"Gâteaux d'Halloween", animateur_ice:"Mélanie", date:"2026-10-30", h_debut:"15h", h_fin:"17h", lieu:"Le Bien Cervi", detail:"Découvrez la confection et l'art des gâteaux d'Halloween avec Mélanie", image_1:"", image_2:"", image_3:"" },
+    { id:"2", titre:"Gâteaux de noël", animateur_ice:"Mélanie", date:"2026-12-20", h_debut:"15h", h_fin:"16h", lieu:"Le Bien Cervi", detail:"Découvrez la confection et l'art des gâteaux de noël avec Mélanie", image_1:"", image_2:"", image_3:"" }
+  ],
+  actualites: [
+    { id:"1", titre:"Noël au Bien Cervi !", date:"2025-12-19", detail:"Un après-midi pour fêter la fin d'année ensemble.\nVenez nombreux !", image_1:"" }
+  ],
+  menu: [
+    { categorie:"Boissons chaudes", nom:"Café", description:"", prix:"1 €" },
+    { categorie:"Boissons chaudes", nom:"Thé & infusions", description:"Sélection du moment", prix:"1,50 €" },
+    { categorie:"À grignoter", nom:"Part de gâteau maison", description:"Fait par les bénévoles", prix:"2 €" }
+  ],
+  infos: {}
+};
+
+/* =====================================================================
+   Utilitaires
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const lien = s => s.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+const para = t => esc(t).split(/\n+/).filter(Boolean).map(p => `<p>${lien(p)}</p>`).join("");
+const MOIS_COURT = ["janv","févr","mars","avr","mai","juin","juil","août","sept","oct","nov","déc"];
+const EMOJIS = ["🍰","🎨","🎲","🥐","🎶","🧶","📚","🌻"];
+const FONDS = ["#F2B8A2","#EBB03A","#DDE8D3","#F6D7B0","#C9DCE0"];
+
+function parseDate(s){
+  const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+}
+const aujourdhui = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
+const dateLongue = d => d ? d.toLocaleDateString("fr-FR", { weekday:"long", day:"numeric", month:"long", year:"numeric" }) : "";
+const dateCourte = d => d ? d.toLocaleDateString("fr-FR", { day:"numeric", month:"long", year:"numeric" }) : "";
+const imagesDe = it => [it.image_1, it.image_2, it.image_3].filter(u => /^https?:\/\//.test(u || ""));
+const horaire = it => it.h_debut ? (it.h_fin ? `${it.h_debut} – ${it.h_fin}` : it.h_debut) : "";
+const txt = k => (state.data.infos && state.data.infos[k]) || CONFIG.DEFAUT[k] || "";
+
+function estOuvert(){
+  const n = new Date(), h = n.getHours() + n.getMinutes() / 60;
+  return (CONFIG.HORAIRES[n.getDay()] || []).some(([a, b]) => h >= a && h < b);
+}
+
+/* =====================================================================
+   Données
+   ===================================================================== */
+const state = { data: DEMO, brut: "", demo: true };
+
+async function charger(){
+  const configure = CONFIG.API_URL.startsWith("https://");
+  if (!configure){ state.data = DEMO; state.demo = true; if (!state.charge) rendre(true); state.charge = true; return; }
+  state.demo = false;
+  try{
+    const rep = await fetch(CONFIG.API_URL, { cache:"no-store" });
+    if (!rep.ok) throw new Error(rep.status);
+    const brut = await rep.text();
+    $("#erreur").innerHTML = "";
+    if (brut !== state.brut){
+      state.brut = brut; state.data = JSON.parse(brut);
+      try{ localStorage.setItem("lbc-data", brut); }catch(e){}
+      rendre(!state.charge);
+    }
+  }catch(e){
+    if (!state.charge){
+      try{ const c = localStorage.getItem("lbc-data"); if (c) state.data = JSON.parse(c); }catch(x){}
+      rendre(true);
+    }
+    $("#erreur").innerHTML = `<div class="bandeau-erreur">Impossible de rafraîchir les infos pour le moment — voici la dernière version connue.</div>`;
+  }
+  state.charge = true;
+}
+
+/* =====================================================================
+   Composants
+   ===================================================================== */
+function badgeDate(d){
+  return d ? `<div class="date-badge"><b>${MOIS_COURT[d.getMonth()]}</b><span>${d.getDate()}</span></div>` : "";
+}
+function vignette(it, i){
+  const img = imagesDe(it)[0];
+  return `<div class="vignette" style="background:${FONDS[i % FONDS.length]}">${img ? `<img src="${esc(img)}" alt="" loading="lazy">` : EMOJIS[i % EMOJIS.length]}</div>`;
+}
+function carteAnim(a, i){
+  const d = parseDate(a.date), passee = d && d < aujourdhui();
+  return `<a class="carte ${passee ? "passee" : ""}" href="#/animation/${esc(a.id)}">
+    ${badgeDate(d)}${passee ? '<span class="etiquette">Terminé</span>' : ""}
+    ${vignette(a, i)}
+    <div class="corps"><h3>${esc(a.titre)}</h3>
+      <div class="meta">${[horaire(a), a.animateur_ice && "avec " + a.animateur_ice].filter(Boolean).map(esc).join(" · ")}</div>
+      <div class="extrait">${esc(a.detail)}</div><span class="plus">Voir l'atelier →</span></div></a>`;
+}
+function carteNews(n, i){
+  const d = parseDate(n.date);
+  return `<a class="carte" href="#/actualite/${esc(n.id)}">
+    ${badgeDate(d)}${vignette(n, i + 2)}
+    <div class="corps"><h3>${esc(n.titre)}</h3>
+      <div class="meta">${esc(dateCourte(d))}</div>
+      <div class="extrait">${esc(n.detail)}</div><span class="plus">Lire la suite →</span></div></a>`;
+}
+function galerie(it){
+  const im = imagesDe(it);
+  return im.length ? `<div class="galerie">${im.map(u => `<img src="${esc(u)}" alt="" loading="lazy" data-zoom>`).join("")}</div>` : "";
+}
+const prochaines = () => (state.data.animations || []).filter(a => { const d = parseDate(a.date); return d && d >= aujourdhui(); })
+  .sort((a, b) => a.date.localeCompare(b.date));
+const passees = () => (state.data.animations || []).filter(a => { const d = parseDate(a.date); return !d || d < aujourdhui(); })
+  .sort((a, b) => b.date.localeCompare(a.date));
+const actus = () => [...(state.data.actualites || [])].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+/* =====================================================================
+   Pages
+   ===================================================================== */
+const logoTasse = `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M40 80h104v50a40 40 0 0 1-40 40h-24a40 40 0 0 1-40-40z" fill="#FFFBF2" stroke="#3B2A20" stroke-width="7"/><path d="M144 92h14a22 22 0 0 1 0 44h-18" fill="none" stroke="#3B2A20" stroke-width="7"/><path d="M70 62c-8-12 8-16 0-30M96 62c-8-12 8-16 0-30M122 62c-8-12 8-16 0-30" fill="none" stroke="#EBB03A" stroke-width="8" stroke-linecap="round"/><path d="M52 98h80" stroke="#EBB03A" stroke-width="7" stroke-linecap="round"/></svg>`;
+
+function pageAccueil(){
+  const ouvert = estOuvert(), pro = prochaines().slice(0, 3), news = actus().slice(0, 3);
+  return `
+  <section class="hero"><div class="wrap">
+    <div class="apparition">
+      <span class="pastille ${ouvert ? "ouvert" : ""}"><i></i>${ouvert ? "Ouvert en ce moment !" : "Mercredi & samedi"}</span>
+      <h1>Un café <span class="surligne">associatif</span>, ouvert à toutes et tous</h1>
+      <p class="lead">${esc(txt("intro"))}</p>
+      <div class="actions"><a class="btn" href="#/menu">☕ Voir le menu</a><a class="btn clair" href="#/a-propos">Notre histoire</a></div>
+    </div>
+    <div class="visuel apparition"><div class="rond"></div><div class="rond2"></div><div class="rond3"></div>${logoTasse}
+      <div class="sticker">Rocheservière<small>depuis le cœur du village</small></div></div>
+  </div>
+  <svg class="vague" viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0 30 Q150 0 300 25 T600 25 T900 25 T1200 20 V50 H0Z" fill="#FFFBF2"/></svg></section>
+
+  <section class="bloc" style="background:var(--papier);padding-top:40px"><div class="wrap">
+    <div class="titre-section"><h2><span>Au programme</span>Les prochains ateliers</h2><a class="btn clair" href="#/animations">Toutes les animations</a></div>
+    ${pro.length ? `<div class="grille">${pro.map(carteAnim).join("")}</div>` : `<div class="vide">Pas d'atelier annoncé pour l'instant… repassez bientôt, ou passez nous voir autour d'un café ☕</div>`}
+  </div></section>
+
+  <section class="bloc sauge"><div class="wrap">
+    <div class="titre-section"><h2><span>Ça s'est passé (ou ça se passe) ici</span>Les dernières actualités</h2><a class="btn clair" href="#/actualites">Toutes les actualités</a></div>
+    ${news.length ? `<div class="grille">${news.map(carteNews).join("")}</div>` : `<div class="vide">Aucune actualité pour le moment.</div>`}
+  </div></section>
+
+  <section class="rejoindre"><div class="wrap">
+    <div><h2>Rejoignez-nous !</h2><p>${esc(txt("rejoindre"))}</p></div>
+    <div class="btns">
+      ${txt("helloasso") ? `<a class="btn jaune" href="${esc(txt("helloasso"))}" target="_blank" rel="noopener">Adhérer / soutenir le café</a>` : ""}
+      <a class="btn clair" href="mailto:${esc(txt("email"))}">✉️ ${esc(txt("email"))}</a>
+    </div>
+  </div></section>
+
+  <section class="bloc"><div class="wrap infos">
+    <div class="boite"><h3>🕒 Horaires d'ouverture</h3><p>${esc(txt("horaires"))}</p></div>
+    <div class="boite"><h3>📍 Venir nous voir</h3><p>${esc(txt("adresse"))}</p>
+      <p style="margin-top:12px"><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(txt("adresse").replace(/\n/g," "))}" target="_blank" rel="noopener">Voir sur la carte →</a></p></div>
+    <div class="boite"><h3>💌 Nous écrire</h3><p><a href="mailto:${esc(txt("email"))}">${esc(txt("email"))}</a></p></div>
+  </div></section>`;
+}
+
+function pageAnimations(){
+  const pro = prochaines(), pas = passees();
+  const aff = pas.length && state.voirPassees;
+  return `<div class="wrap apparition"><div class="page-tete"><h1>Les animations</h1><p>Ateliers, expositions, soirées… presque toujours gratuits, et toujours ouverts à tout le monde.</p></div>
+  <div class="page-corps">
+    <div class="bascule"><button class="${aff ? "" : "on"}" data-vue="avenir">À venir (${pro.length})</button><button class="${aff ? "on" : ""}" data-vue="passees">Déjà passées (${pas.length})</button></div>
+    ${(aff ? pas : pro).length ? `<div class="grille">${(aff ? pas : pro).map(carteAnim).join("")}</div>` : `<div class="vide">Rien d'annoncé pour l'instant — ça arrive !</div>`}
+  </div></div>`;
+}
+
+function pageAnimation(id){
+  const a = (state.data.animations || []).find(x => String(x.id) === String(id));
+  if (!a) return introuvable("Cet atelier n'existe pas (ou plus).", "#/animations");
+  document.title = `${a.titre} · Le Bien Cervi`;
+  const d = parseDate(a.date);
+  return `<div class="wrap apparition"><div class="page-tete"><a class="fil" href="#/animations">← Toutes les animations</a><h1>${esc(a.titre)}</h1></div>
+  <div class="page-corps"><div class="fiche">
+    <div class="texte">${para(a.detail)}${galerie(a)}</div>
+    <aside class="cartouche">
+      ${d ? `<div><em>📅</em><span>${esc(dateLongue(d))}</span></div>` : ""}
+      ${horaire(a) ? `<div><em>🕒</em><span>${esc(horaire(a))}</span></div>` : ""}
+      ${a.lieu ? `<div><em>📍</em><span>${esc(a.lieu)}</span></div>` : ""}
+      ${a.animateur_ice ? `<div><em>🧑‍🍳</em><span>Avec ${esc(a.animateur_ice)}</span></div>` : ""}
+    </aside></div></div></div>`;
+}
+
+function pageActualites(){
+  const n = actus();
+  return `<div class="wrap apparition"><div class="page-tete"><h1>Les actualités</h1><p>Les nouvelles du café, de l'asso et du village.</p></div>
+  <div class="page-corps">${n.length ? `<div class="grille">${n.map(carteNews).join("")}</div>` : `<div class="vide">Aucune actualité pour le moment.</div>`}</div></div>`;
+}
+
+function pageActualite(id){
+  const n = (state.data.actualites || []).find(x => String(x.id) === String(id));
+  if (!n) return introuvable("Cet article n'existe pas (ou plus).", "#/actualites");
+  document.title = `${n.titre} · Le Bien Cervi`;
+  const d = parseDate(n.date);
+  return `<div class="wrap apparition"><div class="page-tete"><a class="fil" href="#/actualites">← Toutes les actualités</a><h1>${esc(n.titre)}</h1>${d ? `<p>${esc(dateLongue(d))}</p>` : ""}</div>
+  <div class="page-corps"><div class="texte" style="max-width:760px;font-size:1.1rem">${para(n.detail)}${galerie(n)}</div></div></div>`;
+}
+
+function pageAPropos(){
+  return `<div class="wrap apparition"><div class="page-tete"><h1>À propos du Bien Cervi</h1><p>${esc(txt("accroche"))}</p></div>
+  <div class="page-corps">
+    <div class="texte" style="max-width:760px;font-size:1.12rem">${para(txt("a_propos"))}</div>
+    <div class="valeurs">
+      <div class="valeur"><div class="ico">🤝</div><h3>Un lieu de rencontre</h3><p>Voisins, familles, curieux, nouveaux venus : on se croise, on discute, on se découvre.</p></div>
+      <div class="valeur"><div class="ico">🎨</div><h3>Des animations pour tous</h3><p>Ateliers, expositions, événements… à tout âge et presque toujours gratuits.</p></div>
+      <div class="valeur"><div class="ico">🌻</div><h3>Une asso qui vit grâce à vous</h3><p>Le café tourne avec des bénévoles et des idées. Les vôtres sont les bienvenues !</p></div>
+    </div>
+    <div class="infos">
+      <div class="boite"><h3>🕒 Horaires</h3><p>${esc(txt("horaires"))}</p></div>
+      <div class="boite"><h3>📍 Adresse</h3><p>${esc(txt("adresse"))}</p></div>
+      <div class="boite"><h3>🙌 Rejoindre l'équipe</h3><p>${esc(txt("rejoindre"))}</p><p style="margin-top:12px"><a class="btn jaune" href="mailto:${esc(txt("email"))}">Nous écrire</a></p></div>
+    </div></div></div>`;
+}
+
+function pageMenu(){
+  const items = state.data.menu || [];
+  const cats = [];
+  items.forEach(it => { const c = it.categorie || "Au menu"; let g = cats.find(x => x.nom === c); if (!g) cats.push(g = { nom:c, it:[] }); g.it.push(it); });
+  return `<div class="wrap apparition"><div class="page-tete"><h1>Le menu</h1><p>Des boissons et des petites douceurs, à prix doux. Ici, c'est l'asso qui régale.</p></div>
+  <div class="page-corps">${cats.length ? `<div class="ardoise">${cats.map(c => `<div class="cat"><h2>${esc(c.nom)}</h2>
+    ${c.it.map(i => `<div class="ligne"><b>${esc(i.nom)}</b><span class="pointilles"></span><span class="prix">${esc(i.prix)}</span></div>${i.description ? `<div class="desc">${esc(i.description)}</div>` : ""}`).join("")}</div>`).join("")}</div>` : `<div class="vide">Le menu arrive bientôt.</div>`}
+    ${state.demo ? '<p class="note-menu">(Menu d\'exemple — il sera remplacé par celui de ton Google Sheets.)</p>' : ""}
+  </div></div>`;
+}
+
+function introuvable(msg, retour){
+  return `<div class="wrap"><div class="page-tete"><h1>Oups 🫖</h1><p>${esc(msg)}</p><p><a class="btn" href="${retour}">Retour</a></p></div></div>`;
+}
+
+function pied(){
+  const reseaux = [txt("facebook") && `<a href="${esc(txt("facebook"))}" target="_blank" rel="noopener">Facebook</a>`, txt("instagram") && `<a href="${esc(txt("instagram"))}" target="_blank" rel="noopener">Instagram</a>`].filter(Boolean).join(" · ");
+  return `<div class="wrap">
+    <div><h4>${esc(txt("nom"))}</h4><p>${esc(txt("accroche"))}</p>${reseaux ? `<p style="margin-top:10px">${reseaux}</p>` : ""}</div>
+    <div><h4>Horaires</h4><p>${esc(txt("horaires"))}</p></div>
+    <div><h4>Contact</h4><p>${esc(txt("adresse"))}</p><p><a href="mailto:${esc(txt("email"))}">${esc(txt("email"))}</a></p></div>
+    <div class="bas">Fait avec ☕ et ❤️ à Rocheservière · Association Le Bien Cervi</div></div>`;
+}
+
+/* =====================================================================
+   Routage & rendu
+   ===================================================================== */
+function route(){
+  const [, page = "", id] = (location.hash || "#/").slice(1).split("/");
+  switch (page){
+    case "animations":  return ["animations", pageAnimations()];
+    case "animation":   return ["animations", pageAnimation(id)];
+    case "actualites":  return ["actualites", pageActualites()];
+    case "actualite":   return ["actualites", pageActualite(id)];
+    case "menu":        return ["menu", pageMenu()];
+    case "a-propos":    return ["a-propos", pageAPropos()];
+    default:            return ["accueil", pageAccueil()];
+  }
+}
+const TITRES = { accueil:"Le Bien Cervi · Café associatif à Rocheservière", animations:"Animations · Le Bien Cervi", actualites:"Actualités · Le Bien Cervi", menu:"Menu · Le Bien Cervi", "a-propos":"À propos · Le Bien Cervi" };
+
+function rendre(remonter){
+  const y = window.scrollY;
+  const [actif, html] = route();
+  $("#app").innerHTML = html;
+  $("#pied").innerHTML = pied();
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("actif", a.dataset.p === actif));
+  if (!/animation\/|actualite\//.test(location.hash)) document.title = TITRES[actif];
+  $("#nav").classList.remove("ouvert");
+  window.scrollTo(0, remonter ? 0 : y);
+}
+
+window.addEventListener("hashchange", () => rendre(true));
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-vue]");
+  if (b){ state.voirPassees = b.dataset.vue === "passees"; rendre(false); }
+  const z = e.target.closest("[data-zoom]");
+  if (z){
+    const lb = document.createElement("div"); lb.className = "lightbox";
+    lb.innerHTML = `<img src="${z.src}" alt="">`; lb.onclick = () => lb.remove(); document.body.append(lb);
+  }
+});
+$("#burger").addEventListener("click", () => $("#nav").classList.toggle("ouvert"));
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelector(".lightbox")?.remove(); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden) charger(); });
+
+charger();
+setInterval(charger, CONFIG.ACTUALISATION_MS);
+</script>
+</body>
+</html>
