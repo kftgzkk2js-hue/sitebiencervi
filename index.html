@@ -71,15 +71,24 @@
     .texte p {
         margin-bottom: 1em
     }/* ---- Fond d'image des pages intérieures (réglé depuis l'onglet « Images ») ---- */
+    body {
+        position: relative
+    }
+
     #fond {
-        position: fixed;
-        inset: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: clamp(460px, 78vh, 760px);
         z-index: -1;
         background-size: cover;
-        background-position: center;
+        background-position: center top;
         opacity: 0;
         transition: opacity .7s ease;
-        pointer-events: none
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 50%, transparent 100%)
     }
 
     #fond.on {
@@ -234,7 +243,7 @@
         position: relative;
         overflow: hidden;
         padding: 72px 0 112px;
-        background: linear-gradient(180deg, rgba(251, 243, 228, .70), rgba(251, 243, 228, .52) 55%, rgba(251, 243, 228, .84)), var(--hero) center/cover no-repeat
+        background: linear-gradient(180deg, rgba(251, 243, 228, .80), rgba(251, 243, 228, .70) 55%, rgba(251, 243, 228, .90)), var(--hero) center/cover no-repeat
     }
 
     .hero .wrap {
@@ -1408,7 +1417,7 @@
             display: none
         }
 
-        .jour.ouvert::after {
+        .jour.ouvert::after, .legende-cafe {
             display: none
         }
 
@@ -1815,7 +1824,7 @@
         const sel = state.calSel && par[state.calSel];
         const bas = sel
         ? `<p class="cal-note" style="margin-bottom:10px"><b>${esc(dateLongue(parseDate(state.calSel)))}</b></p><div class="cal-liste">${sel.map(a => `<a class="cal-item" href="#/animation/${esc(a.id)}"><span class="cal-heure">${esc(horaire(a) || "Toute la journée")}</span><span class="cal-txt"><b>${esc(a.titre)}</b><small>${esc([a.lieu, a.animateur_ice && "avec " + a.animateur_ice].filter(Boolean).join(" · "))}</small></span><span class="cal-go">→</span></a>`).join("")}</div>`
-        : `<p class="cal-note">${nbMois ? `${nbMois} animation${nbMois > 1 ? "s" : ""} ce mois-ci — touchez un jour coloré pour les détails.` : "Pas d'animation prévue ce mois-ci."} · ☕ = jours d'ouverture du café</p>`;
+        : `<p class="cal-note">${nbMois ? `${nbMois} animation${nbMois > 1 ? "s" : ""} ce mois-ci — touchez un jour coloré pour les détails.` : "Pas d'animation prévue ce mois-ci."} <span class="legende-cafe"> · ☕ = jours d'ouverture du café</span></p>`;
         const titre = new Date(y, m, 1).toLocaleDateString("fr-FR", {
             month: "long",
             year: "numeric"
@@ -2059,7 +2068,7 @@
         }[actif];
         const f = $("#fond");
         if (/^https?:\/\//.test(url || "")) {
-            f.style.backgroundImage = `linear-gradient(rgba(251,243,228,.84),rgba(251,243,228,.90)),url("${url.replace(/"/g, "%22")}")`;
+            f.style.backgroundImage = `linear-gradient(180deg,rgba(251,243,228,.80),rgba(251,243,228,.70)),url("${url.replace(/"/g, "%22")}")`;
             f.classList.add("on");
         } else
             f.classList.remove("on");
